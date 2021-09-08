@@ -22,6 +22,7 @@ public:
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	Tetris* tetris;
 
 	//Screen dimensions
 	const int SCREEN_WIDTH = 300;

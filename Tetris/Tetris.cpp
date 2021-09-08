@@ -2,6 +2,7 @@
 
 Tetris::Tetris()
 {
+	controller = new Tetromino();
 
 }
 

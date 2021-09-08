@@ -5,6 +5,7 @@ Game::Game() {
 	window = NULL;
 	renderer = NULL;
 	running = true;
+	tetris = new Tetris;
 }
 
 void Game::init() {
@@ -31,6 +32,8 @@ void Game::init() {
 	else {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
+
+
 }
 
 void Game::close() {
@@ -42,6 +45,8 @@ void Game::close() {
 	
 	window = NULL;
 	renderer = NULL;
+	delete tetris;
+	tetris = NULL;
 
 	// Quit SDL
 	SDL_Quit();
@@ -69,7 +74,9 @@ void Game::render() {
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 	SDL_RenderFillRect(renderer, &fillRect);
 
-	//Draw a Grid
+	//Draw the board
+
+	//Draw a Grid because im too lazy to work with sprites, maybe move into seperate function for cleaner code 
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	int xOffset = SCREEN_WIDTH / 10;
 	int yOffset = SCREEN_HEIGHT / 24;
@@ -81,7 +88,7 @@ void Game::render() {
 	}
 	SDL_RenderDrawLine(renderer, SCREEN_WIDTH - 1, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1); //adds lines at bottom right corner
 	SDL_RenderDrawLine(renderer, 0, SCREEN_HEIGHT - 1, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
-	//Draw the board
+	
 	
 	SDL_RenderPresent(renderer);
 }
